@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ideal_store/pages/login.dart';
 
 class GreetingPage extends StatefulWidget {
   const GreetingPage({super.key});
@@ -71,7 +72,10 @@ class _GreetingPageState extends State<GreetingPage> {
                   width: 370,
                   height: 55,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => LoginPage()));
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.transparent,
                       shape: RoundedRectangleBorder(
