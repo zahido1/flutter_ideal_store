@@ -1,25 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ideal_store/pages/sign_up.dart';
+import 'package:flutter_ideal_store/pages/login.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
+  bool isChecked = false;
+
+  void toggleCheck() {
+    setState(() {
+      isChecked = !isChecked;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            expandedHeight: 250,
+            expandedHeight: 150,
             flexibleSpace: FlexibleSpaceBar(
               titlePadding: const EdgeInsets.only(left: 16, bottom: 16),
               title: const Text(
-                "Log Into Your\nAccount",
+                "Create Your\nAccount",
                 softWrap: true,
                 style: TextStyle(
                   fontSize: 18,
@@ -37,85 +45,28 @@ class _LoginPageState extends State<LoginPage> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        height: 20,
+                  CustomTextField("User Name", "Heidi"),
+                  CustomTextField("Phone Number", "+994555555555"),
+                  CustomTextField("Enter your email", "heidi@gmail.com"),
+                  CustomTextField("Password", "********"),
+                  CustomTextField("Confirm Password", "********"),
+                  const SizedBox(height: 10),
+                  CheckboxListTile(
+                    value: isChecked,
+                    onChanged: (value) {
+                      toggleCheck();
+                    },
+                    title: const Text(
+                      "You agree the terms and privacy policy",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
                       ),
-                      const Text(
-                        "Email or Phone Number",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 17),
-                      ),
-                      const SizedBox(height: 10),
-                      TextField(
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide:
-                                  BorderSide(width: 1.5, color: Colors.red),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide:
-                                  BorderSide(width: 1.5, color: Colors.red),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide:
-                                  BorderSide(width: 1.5, color: Colors.red),
-                            ),
-                            hintText: "heidi@gmail.com"),
-                        cursorColor: Colors.red,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      const Text(
-                        "Password",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 17),
-                      ),
-                      SizedBox(height: 10),
-                      TextField(
-                        obscureText: true,
-                        obscuringCharacter: '*',
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                  width: 1.5, color: Colors.red),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                  width: 1.5, color: Colors.red),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                  width: 1.5, color: Colors.red),
-                            ),
-                            hintText: "*********"),
-                        cursorColor: Colors.red,
-                      ),
-                      const SizedBox(height: 10),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 200),
-                        child: TextButton(
-                            onPressed: () {},
-                            child: const Text(
-                              "Forget Password?",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 17,
-                                  color: Colors.black),
-                            )),
-                      ),
-                      const SizedBox(height: 25),
-                    ],
+                    ),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    activeColor: Colors.red,
                   ),
+                  SizedBox(height: 20),
                   Column(
                     children: [
                       SizedBox(
@@ -129,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
-                          child: const Text("Sign In",
+                          child: const Text("Sign Up",
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold)),
                         ),
@@ -245,18 +196,18 @@ class _LoginPageState extends State<LoginPage> {
                       TextButton(
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => SignUpPage()));
+                              builder: (context) => LoginPage()));
                         },
                         child: RichText(
                           text: const TextSpan(
-                            text: "Don't have an account? ",
+                            text: "Already have an account? ",
                             style: TextStyle(
                               fontSize: 16,
                               color: Color.fromARGB(255, 76, 76, 76),
                             ),
                             children: [
                               TextSpan(
-                                text: "Sign Up",
+                                text: "Login",
                                 style:
                                     TextStyle(fontSize: 16, color: Colors.blue),
                               ),
@@ -273,6 +224,39 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ],
       ),
+    );
+  }
+
+  Column CustomTextField(String text, String hint) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(
+          height: 20,
+        ),
+        Text(
+          text,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+        ),
+        const SizedBox(height: 10),
+        TextField(
+          decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(width: 1.5, color: Colors.red),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(width: 1.5, color: Colors.red),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(width: 1.5, color: Colors.red),
+              ),
+              hintText: hint),
+          cursorColor: Colors.red,
+        ),
+      ],
     );
   }
 }
