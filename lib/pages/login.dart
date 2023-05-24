@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ideal_store/pages/gender_choice.dart';
 import 'package:flutter_ideal_store/pages/sign_up.dart';
 
 class LoginPage extends StatefulWidget {
@@ -122,7 +123,10 @@ class _LoginPageState extends State<LoginPage> {
                         width: 350,
                         height: 55,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => GenderChoicePage()));
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.red,
                             shape: RoundedRectangleBorder(
