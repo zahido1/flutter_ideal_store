@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ideal_store/pages/cart.dart';
-import 'package:flutter_ideal_store/pages/chat.dart';
-import 'package:flutter_ideal_store/pages/setting.dart';
 
-import '../pages/home.dart';
+import '../pages/bars/cart.dart';
+import '../pages/bars/chat.dart';
+import '../pages/bars/home.dart';
+import '../pages/bars/setting.dart';
 
 class TabBarWidget extends StatefulWidget {
   const TabBarWidget({Key? key}) : super(key: key);
