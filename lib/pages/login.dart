@@ -54,18 +54,18 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide:
-                                  BorderSide(width: 1.5, color: Colors.red),
+                              borderSide: const BorderSide(
+                                  width: 1.5, color: Colors.red),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide:
-                                  BorderSide(width: 1.5, color: Colors.red),
+                              borderSide: const BorderSide(
+                                  width: 1.5, color: Colors.red),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
-                              borderSide:
-                                  BorderSide(width: 1.5, color: Colors.red),
+                              borderSide: const BorderSide(
+                                  width: 1.5, color: Colors.red),
                             ),
                             hintText: "heidi@gmail.com"),
                         cursorColor: Colors.red,
@@ -78,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 17),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       TextField(
                         obscureText: true,
                         obscuringCharacter: '*',
@@ -125,7 +125,8 @@ class _LoginPageState extends State<LoginPage> {
                         child: ElevatedButton(
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => GenderChoicePage()));
+                                builder: (context) =>
+                                    const GenderChoicePage()));
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.red,
@@ -219,12 +220,13 @@ class _LoginPageState extends State<LoginPage> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 1, color: Colors.black),
+                              side: const BorderSide(
+                                  width: 1, color: Colors.black),
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.only(left: 16),
+                            padding: const EdgeInsets.only(left: 16),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: const [
@@ -249,7 +251,7 @@ class _LoginPageState extends State<LoginPage> {
                       TextButton(
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => SignUpPage()));
+                              builder: (context) => const SignUpPage()));
                         },
                         child: RichText(
                           text: const TextSpan(
@@ -268,7 +270,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ],

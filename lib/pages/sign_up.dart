@@ -45,11 +45,11 @@ class _SignUpPageState extends State<SignUpPage> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 children: [
-                  CustomTextField("User Name", "Heidi"),
-                  CustomTextField("Phone Number", "+994555555555"),
-                  CustomTextField("Enter your email", "heidi@gmail.com"),
-                  CustomTextField("Password", "********"),
-                  CustomTextField("Confirm Password", "********"),
+                  customTextField("User Name", "Heidi"),
+                  customTextField("Phone Number", "+994555555555"),
+                  customTextField("Enter your email", "heidi@gmail.com"),
+                  customTextField("Password", "********"),
+                  customTextField("Confirm Password", "********"),
                   const SizedBox(height: 10),
                   CheckboxListTile(
                     value: isChecked,
@@ -66,7 +66,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     controlAffinity: ListTileControlAffinity.leading,
                     activeColor: Colors.red,
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Column(
                     children: [
                       SizedBox(
@@ -166,12 +166,13 @@ class _SignUpPageState extends State<SignUpPage> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 1, color: Colors.black),
+                              side: const BorderSide(
+                                  width: 1, color: Colors.black),
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.only(left: 16),
+                            padding: const EdgeInsets.only(left: 16),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: const [
@@ -196,7 +197,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       TextButton(
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => LoginPage()));
+                              builder: (context) => const LoginPage()));
                         },
                         child: RichText(
                           text: const TextSpan(
@@ -215,7 +216,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ],
@@ -227,7 +228,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  Column CustomTextField(String text, String hint) {
+  Column customTextField(String text, String hint) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -236,22 +237,22 @@ class _SignUpPageState extends State<SignUpPage> {
         ),
         Text(
           text,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
         ),
         const SizedBox(height: 10),
         TextField(
           decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1.5, color: Colors.red),
+                borderSide: const BorderSide(width: 1.5, color: Colors.red),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1.5, color: Colors.red),
+                borderSide: const BorderSide(width: 1.5, color: Colors.red),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide(width: 1.5, color: Colors.red),
+                borderSide: const BorderSide(width: 1.5, color: Colors.red),
               ),
               hintText: hint),
           cursorColor: Colors.red,

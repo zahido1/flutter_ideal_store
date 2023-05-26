@@ -28,8 +28,8 @@ class _GenderChoicePageState extends State<GenderChoicePage> {
             left: 5,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => LoginPage()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const LoginPage()));
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.transparent,
@@ -62,6 +62,16 @@ class _GenderChoicePageState extends State<GenderChoicePage> {
                 fontWeight: FontWeight.bold,
                 fontSize: 30,
               ),
+            ),
+          ),
+          const Positioned(
+            bottom: 220,
+            left: 25,
+            right: 25,
+            child: Divider(
+              color: Colors.white54,
+              thickness: 1,
+              height: 20,
             ),
           ),
           Positioned(

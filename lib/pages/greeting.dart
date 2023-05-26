@@ -29,8 +29,8 @@ class _GreetingPageState extends State<GreetingPage> {
             right: 5,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => SignUpPage()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const SignUpPage()));
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.transparent,
@@ -77,8 +77,8 @@ class _GreetingPageState extends State<GreetingPage> {
                   height: 55,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => LoginPage()));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const LoginPage()));
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.transparent,
