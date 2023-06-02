@@ -10,6 +10,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final List _carouselImages = [
+    'https://en.ac-illust.com/blog/wp-content/uploads/2022/03/Happy-womens-day-illustAC-100-1.jpeg',
+    'https://static.vecteezy.com/system/resources/previews/017/637/586/original/international-women-s-day-horizontal-banner-with-happy-women-different-nationalitie-8th-march-poster-pastel-background-for-web-banner-free-vector.jpg',
+    'https://static.vecteezy.com/system/resources/previews/018/845/714/original/international-women-day-poster-with-abstract-women-silhouette-illustration-free-vector.jpg',
+  ];
+  int _currentCarouselIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,17 +72,17 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               CarouselSlider(
-                items: [
-                  Container(
+                items: _carouselImages.map((img) {
+                  return Container(
                     height: 150,
                     width: MediaQuery.of(context).size.width,
                     margin: const EdgeInsets.symmetric(horizontal: 5),
                     child: Image.network(
-                      "https://i.pinimg.com/originals/b6/8b/62/b68b62ca6c06bd97168c3fd41ad21a01.jpg",
+                      img,
                       fit: BoxFit.cover,
                     ),
-                  ),
-                ],
+                  );
+                }).toList(),
                 options: CarouselOptions(
                   height: 150,
                   initialPage: 0,
@@ -85,10 +92,42 @@ class _HomePageState extends State<HomePage> {
                   autoPlayAnimationDuration: const Duration(milliseconds: 800),
                   autoPlayCurve: Curves.fastOutSlowIn,
                   scrollDirection: Axis.horizontal,
+                  viewportFraction: 1, // yalniz bir image gorunur
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      _currentCarouselIndex = index;
+                    });
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                alignment: Alignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: _carouselImages.map(
+                    (img) {
+                      int idx = _carouselImages.indexOf(img);
+                      return Container(
+                        width: _currentCarouselIndex == idx ? 11 : 9,
+                        height: _currentCarouselIndex == idx ? 11 : 9,
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 4.0),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: _currentCarouselIndex == idx
+                              ? Colors.red
+                              : Colors.grey,
+                        ),
+                      );
+                    },
+                  ).toList(),
                 ),
               ),
               const SizedBox(
-                height: 30,
+                height: 15,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
